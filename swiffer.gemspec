@@ -30,7 +30,8 @@ Gem::Specification.new do |s|
      "spec/library_spec.rb",
      "spec/project_spec.rb",
      "spec/spec.opts",
-     "spec/spec_helper.rb"
+     "spec/spec_helper.rb",
+     "swiffer.gemspec"
   ]
   s.homepage = %q{http://github.com/peterbrowne/swiffer}
   s.rdoc_options = ["--charset=UTF-8"]
