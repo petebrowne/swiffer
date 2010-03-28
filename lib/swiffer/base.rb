@@ -58,17 +58,17 @@ module Swiffer
     end
     
     def method_missing(method, *args, &block)
-      if method.to_s.match /(\w+)=/
-        @options[$1.to_sym] = args.first
-      elsif args.length == 1
-        @options[method.to_sym] = args.first
-      else
-        option = @options[method.to_sym]
-        unless option.nil?
+      case args.length
+      when 1
+        @options[method.to_s.sub(/\=$/, '').to_sym] = args.first
+      when 0
+        unless (option = @options[method.to_sym]).nil?
           option.is_a?(Proc) ? option.call(self) : option
         else
           super
         end
+      else
+        super
       end
     end
   end
