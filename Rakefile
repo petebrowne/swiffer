@@ -4,19 +4,19 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "swiffer"
-    gem.summary = %Q{TODO: one-line summary of your gem}
+    gem.name        = 'swiffer'
+    gem.summary     = %Q{A Project Building Tool for Actionscript Development}
     gem.description = %Q{A Project Building Tool for Actionscript Development}
-    gem.email = "me@petebrowne.com"
-    gem.homepage = "http://github.com/peterbrowne/swiffer"
-    gem.authors = ["Peter Browne"]
-    gem.add_development_dependency "rspec", ">= 1.2.9"
-    gem.add_development_dependency "yard", ">= 0"
+    gem.email       = 'me@petebrowne.com'
+    gem.homepage    = 'http://github.com/peterbrowne/swiffer'
+    gem.authors     = [ 'Peter Browne' ]
+    gem.add_development_dependency 'rspec', '>= 1.2.9'
+    gem.add_development_dependency 'yard',  '>= 0.5.4'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+  puts 'Jeweler (or a dependency) not available. Install it with: gem install jeweler'
 end
 
 require 'spec/rake/spectask'
@@ -42,7 +42,7 @@ begin
   end
 rescue LoadError
   task :reek do
-    abort "Reek is not available. In order to run reek, you must: sudo gem install reek"
+    abort 'Reek is not available. In order to run reek, you must: sudo gem install reek'
   end
 end
 
@@ -53,6 +53,6 @@ begin
   YARD::Rake::YardocTask.new
 rescue LoadError
   task :yardoc do
-    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
+    abort 'YARD is not available. In order to run yardoc, you must: sudo gem install yard'
   end
 end
