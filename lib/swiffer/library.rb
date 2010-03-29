@@ -11,7 +11,7 @@ module Swiffer
       self.library = true
     end
   
-    def build
+    def build(extra_options = '')
       options = super
       
       source_files = Dir.glob File.join(src_path, '**/*.as')

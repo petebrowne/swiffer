@@ -13,14 +13,6 @@ describe 'A basic Library' do
   it "should default #swc to the output path, using the library's title" do
     @library.swc.should == "#{@library.output_path}/#{@library.title}.swc"
   end
-
-  it 'should throw an error when accessing #swf' do
-    lambda { @library.swf }.should raise_error
-  end
-  
-  it 'should throw an error when trying to #run the library' do
-    lambda { @library.run }.should raise_error
-  end
   
   describe 'running #build' do
     it 'should output to the #swc file' do

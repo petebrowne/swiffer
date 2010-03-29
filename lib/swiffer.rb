@@ -1,4 +1,5 @@
 require 'yaml'
+require 'tilt'
 require 'swiffer/base'
 require 'swiffer/project'
 require 'swiffer/library'

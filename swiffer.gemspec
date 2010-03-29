@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Peter Browne"]
-  s.date = %q{2010-03-28}
+  s.date = %q{2010-03-29}
   s.description = %q{A Project Building Tool for Actionscript Development}
   s.email = %q{me@petebrowne.com}
   s.extra_rdoc_files = [
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
      "lib/swiffer/base.rb",
      "lib/swiffer/library.rb",
      "lib/swiffer/project.rb",
+     "lib/swiffer/templates/launch.xml.erb",
      "spec/library_spec.rb",
      "spec/project_spec.rb",
      "spec/spec.opts",
@@ -39,8 +40,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{A Project Building Tool for Actionscript Development}
   s.test_files = [
-    "spec/library_spec.rb",
-     "spec/project_spec.rb",
+    "spec/project_spec.rb",
+     "spec/library_spec.rb",
      "spec/spec_helper.rb"
   ]
 

@@ -26,6 +26,10 @@ describe 'A basic Project' do
     @project.library_paths.should == []
   end
   
+  it 'should default unset options to nil' do
+    @project.unset_option.should be_nil
+  end
+  
   it 'should not be a library' do
     @project.should_not be_library
   end
@@ -34,12 +38,18 @@ describe 'A basic Project' do
     @project.swf.should == "#{@project.output_path}/#{@project.title}.swf"
   end
 
-  it 'should throw an error when accessing #swc' do
-    lambda { @project.swc }.should raise_error
-  end
-
   it "should include the project's title in the #docs_title" do
     @project.docs_title.should include(@project.title)
+  end
+  
+  describe 'determining if an option is set' do
+    it 'should return true if the option is set' do
+      @project.title?.should === true
+    end
+    
+    it 'should return false if the option is not set' do
+      @project.unset_option?.should === false
+    end
   end
   
   describe 'running #build_docs' do
@@ -63,10 +73,15 @@ describe 'A basic Project' do
       @project.build_docs
     end
   
-    it 'should include any extra options' do
+    it 'should include #build_options' do
       @project.build_docs_options '-some-option=true'
       mock(@project).system %r{ -some-option=true }
       @project.build_docs
+    end
+  
+    it 'should include options from the method call' do
+      mock(@project).system %r{ -some-option=true }
+      @project.build_docs '-some-option=true'
     end
   end
   
@@ -95,10 +110,15 @@ describe 'A basic Project' do
       @project.build
     end
   
-    it 'should include any extra options' do
+    it 'should include #build_options' do
       @project.build_options '-some-option=true'
       mock(@project).system %r{ -some-option=true }
       @project.build
+    end
+  
+    it 'should include options from the method call' do
+      mock(@project).system %r{ -some-option=true }
+      @project.build '-some-option=true'
     end
     
     it 'should include all the #source_paths' do
@@ -111,6 +131,27 @@ describe 'A basic Project' do
       @project.library_paths = [ 'vendor/TweenLite/src', 'vendor/Papervision3D/src' ]
       mock(@project).system %r{ -library-path=#{@project.library_paths.join(',')}}
       @project.build
+    end
+  end
+  
+  describe 'running #launch' do
+    before do
+      mock(File).open @project.launch_xml, 'w'
+    end
+    
+    it 'should run the adl command' do
+      mock(@project).system %r{^adl(\.exe)?}
+      @project.launch
+    end
+    
+    it 'should open the #launch_xml' do
+      mock(@project).system %r{ #{@project.launch_xml} }
+      @project.launch
+    end
+    
+    it 'should run in the current directory' do
+      mock(@project).system %r{ \.$}
+      @project.launch
     end
   end
 end

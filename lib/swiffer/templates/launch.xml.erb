@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<application xmlns="http://ns.adobe.com/air/application/1.5">
+  <id><%= project.title %></id>
+  <version><%= project.version %></version>
+  <filename><%= project.title %></filename>
+  <initialWindow>
+    <title><%= project.title %></title>
+    <content><%= project.swf %></content>
+    <systemChrome><%= project.system_chrome %></systemChrome>
+    <transparent><%= project.transparent %></transparent>
+    <visible><%= project.visible %></visible>
+    <minimizable><%= project.minimizable %></minimizable>
+    <maximizable><%= project.maximizable %></maximizable>
+    <resizable><%= project.resizable %></resizable>
+    <% if project.x? %>
+      <x><%= project.x %></x>
+    <% end %>
+    <% if project.y? %>
+      <y><%= project.y %></y>
+    <% end %>
+    <% if project.width? %>
+      <width><%= project.width %></width>
+    <% end %>
+    <% if project.height? %>
+      <height><%= project.height %></height>
+    <% end %>
+    <% if project.min_size? %>
+      <minSize><%= project.min_size %></minSize>
+    <% end %>
+    <% if project.max_size? %>
+      <maxSize><%= project.max_size %></maxSize>
+    <% end %>
+  </initialWindow>
+</application>
