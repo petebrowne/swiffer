@@ -1,3 +1,5 @@
+require 'yaml'
+
 module Swiffer
   class Base
     def self.default_options

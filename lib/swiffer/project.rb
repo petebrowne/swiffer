@@ -1,3 +1,5 @@
+require 'tilt'
+
 module Swiffer
   class Project < Base
     def self.default_options
