@@ -7,8 +7,9 @@ module Swiffer
         :src_path      => 'src',
         :output_path   => 'bin',
         :docs_path     => 'docs',
+        :lib_path      => 'lib',
         :source_paths  => lambda { |p| [ p.src_path ] },
-        :library_paths => [],
+        :library_paths => lambda { |p| Dir.glob(File.join(p.lib_path, '*.swc')) },
         :library       => false,
         :docs_title    => lambda { |p| "#{p.title} API Documentation" }
       }
@@ -27,8 +28,8 @@ module Swiffer
     end
     
     def build(extra_options = nil)
-      options  = [ "-source-path=#{source_paths.join(',')}" ]
-      options << "-library-path=#{library_paths.join(',')}" if library_paths? and not library_paths.empty?
+      options  = [ "-source-path+=#{source_paths.join(',')}" ]
+      options << "-library-path+=#{library_paths.join(',')}" if library_paths? and not library_paths.empty?
       options << build_options if build_options?
       options << extra_options unless extra_options.nil?
       options
